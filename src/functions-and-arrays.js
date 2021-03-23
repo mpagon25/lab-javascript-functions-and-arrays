@@ -3,7 +3,7 @@
 function maxOfTwoNumbers( x, y ){
   
   if ( x < y ) {
-    return y;
+    return y;  
   } else {
     return x;
   }
@@ -13,9 +13,91 @@ function maxOfTwoNumbers( x, y ){
 // Iteration #2: Find longest word
 const words = ['mystery', 'brother', 'aviator', 'crocodile', 'pearl', 'orchard', 'crackpot'];
 
+
+
+let findLongestWord = ( words ) =>{
+  let longestWord = words[0];
+  
+  if ( words.length == 0){
+    return null;    
+  }
+
+  for ( let i = 0; i < words.length - 1; i++ ){    
+    if ( longestWord.length < words[i+1].length ){
+      longestWord = words[i+1];      
+      
+    }   
+  }
+  return longestWord;
+}
+
+
 // Iteration #3: Calculate the sum
 
 const numbers = [6, 12, 1, 18, 13, 16, 2, 1, 8, 10];
+
+let sumNumbers = ( _numbers)  =>{
+  let sumNum = 0;
+  for (let i = 0; i < _numbers.length; i++ ){
+    sumNum +=_numbers[i];   
+  }
+  return sumNum;
+}
+
+const mixedArr = [6, 12, 'miami', 1, true, 'barca', '200', 'lisboa', 8, 10];
+
+let sum = ( _mixedArr ) => {
+
+  let mixedSum = 0;
+
+  for ( let i = 0; i < _mixedArr.length; i++ ) {
+
+
+    try {
+      if ( typeof _mixedArr[i] == 'string' ){
+        mixedSum += _mixedArr[i].length;
+      }else if ( typeof _mixedArr[i] == 'object' ) {
+        throw "invalid type";
+      }else{
+        mixedSum += _mixedArr[i];
+      }      
+    } catch (e) {
+        console.error(e);
+    } 
+  }
+  return mixedSum;
+  
+/* first approach
+  for ( let i = 0; i < _mixedArr.length; i++ ) {
+
+    try {
+      switch(typeof _mixedArr[i]){
+        case 'string':
+          mixedSum += _mixedArr[i].length;
+          break;
+        case 'number':
+          mixedSum += _mixedArr[i];
+          break;
+        case 'boolean':
+          mixedSum += _mixedArr[i];
+          break;
+        case 'object':
+          throw "Invalid Type";
+          break;
+      }
+      
+    } catch (e) {
+      console.error(e);
+    }
+
+  }
+  return mixedSum;
+
+*/
+}
+
+
+
 
 // Iteration #4: Calculate the average
 // Level 1: Array of numbers
